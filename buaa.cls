@@ -376,7 +376,7 @@
 {\thecontentslabel\ \ }{}
 {\hspace{.25em}\titlerule*[4pt]{$\cdot$}\contentspage}
 
-\titlecontents{subsection}[3em]{\settowidth{\hangindent}{\thecontentslabel\ \ }\songti\zihao{-4}}
+\titlecontents{subsection}[3em]{\settowidth{\hangindent}{\thecontentslabel\ \ }\songti\zihao{5}}
 {\thecontentslabel\ \ }{}
 {\hspace{.25em}\titlerule*[4pt]{$\cdot$}\contentspage}
 
@@ -637,7 +637,7 @@
     \makebox[5\ccwd][s]{中图分类号}：{\bfseries \@clc}%
     \hfill \TranSecretLevel{\@permission}
     \\
-    \makebox[5\ccwd][s]{论文编号}：{\bfseries 1035\@studentid}
+    \makebox[5\ccwd][s]{论文编号}：{\bfseries \@studentid}
   }
 
   \vspace{80pt}
@@ -741,7 +741,7 @@
     \makebox[5\ccwd][s]{中图分类号}：{\bfseries \@clc}%
     \hfill \TranSecretLevel{\@permission}
     \\
-    \makebox[5\ccwd][s]{论文编号}：{\bfseries 10006\@studentid}
+    \makebox[5\ccwd][s]{论文编号}：{\bfseries \@studentid}
   }
 
   \centering
