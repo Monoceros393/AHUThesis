@@ -1,26 +1,8 @@
 %% %%=================================================================
 %% %% <UTF-8>
-%% %% 北航学位论文模板使用样例
-%% %% 请将以下文件与此LaTeX文件放在同一目录中.
-%% %%-----------
-%% %% buaa.cls                  : LaTeX宏模板文件
-%% %% bst/GBT7714-2005.bst      : 国标参考文献BibTeX样式文件2005(https://github.com/Haixing-Hu/GBT7714-2005-BibTeX-Style)
-%% %% bst/GBT7714-2015.bst      : 国标参考文献BibTeX样式文件2015(https://github.com/zepinglee/gbt7714-bibtex-style)
-%% %% pic/logo-buaa.eps         : 论文封皮北航字样
-%% %% pic/head-doctor.eps       : 论文封皮北博士学位论文标题(华文行楷字体替代解决方案)
-%% %% pic/head-master.eps       : 论文封皮北学硕学位论文标题(华文行楷字体替代解决方案)
-%% %% pic/head-professional.eps : 论文封皮北专硕学位论文标题(华文行楷字体替代解决方案)
-%% %% tex/*.tex                 : 本模板样例中的独立章节
-%% %%-----------
-%% %% 请统一使用UTF-8编码.
-%% %%=================================================================
 
 %=================================================================
 % buaa基于ctexbook模板
-% 论文样式参考自《研究生手册--二〇一五年八月》
-%======================
-% 模板导入:
-% \documentclass[thesis,permission,printtype,ostype,<ctexbookoptions>]{buaa}
 %======================
 % 模板选项:
 %======================
@@ -111,8 +93,8 @@
 
 %%=================================================================
 % 论文题目及副标题-{中文}{英文}
-\Title{北航硕博士学位论文~\LaTeX{}模板\BUAAThesis{}}{\LaTeX{} Template of Beihang University Thesis \BUAAThesis{}}
-\Subtitle{版本 \BUAAThesisVer{}}{Version \BUAAThesisVer{}}
+\Title{安徽大学硕士学位论文~\LaTeX{}模板}{\LaTeX{} Template of Anhui University Thesis}
+\Subtitle{学位论文~\LaTeX{}模板}
 
 % 学科大类,默认工学
 % \Branch{工学}
@@ -126,13 +108,13 @@
 \Feild{模式识别与智能系统}
 
 % 导师信息-{中文名}{英文名}{职称}
-\Tutor{导师姓名}{Tutor}{教授}
-\Cotutor{副导师姓名}{Cotutor}{高工}
+\Tutor{导师姓名}{Tutor}{}
+\Cotutor{副导师姓名}{Cotutor}{}
 
 % 学生姓名-{中文名}{英文名}
 \Author{学生姓名}{Student}
 % 学生学号
-\StudentID{ID123456}
+\StudentID{10357ID123456}
 
 % 中图分类号
 \CLC{TP391.4}
@@ -171,20 +153,20 @@
     News, BGR, Shark
 }
 
-% 图标目录
-\Listfigtab{on} % 启用: on[默认]; 关闭: off;
+% 图表目录
+\Listfigtab{off} % 启用: on[默认]; 关闭: off;
 
 % 缩写定义 按tabular环境或其他列表环境编写
-\Abbreviations{ \centering
-\begin{tabular}{cl}
-  $E$ & 能量 \\
-  $m$ & 质量 \\
-  $c$ & 光速 \\
-  $P$ & 概率 \\
-  $T$ & 时间 \\
-  $v$ & 速度 \\
-\end{tabular}
-}
+%\Abbreviations{ \centering
+%\begin{tabular}{cl}
+%  $E$ & 能量 \\
+%  $m$ & 质量 \\
+%  $c$ & 光速 \\
+%  $P$ & 概率 \\
+%  $T$ & 时间 \\
+%  $v$ & 速度 \\
+%\end{tabular}
+%}
 
 \begin{document}
 
