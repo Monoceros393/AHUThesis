@@ -1,9 +1,4 @@
-%% %%=================================================================
-%% %% <UTF-8>
-
-%=================================================================
 % buaa基于ctexbook模板
-%======================
 % 模板选项:
 %======================
 % I.论文类型(thesis)
@@ -54,18 +49,6 @@
 % 3. CTeX在Linux下默认使用Fandol字体，为避免某些生僻字无法显示，在系统已安装方正
 %    字体的前提下可通过fontset=founder选项常用方正字体。
 %=================================================================
-
-\documentclass[master,public,twoside,win,AutoFakeBold]{buaa}
-
-%=================================================================
-% 开启/关闭引用编号颜色：参考文献，公式，图，表，算法 等……
-\refcolor{on}   % 开启: on[默认]; 关闭: off;
-% 摘要和正文从右侧页开始
-\beginright{on} % 开启: on[默认]; 关闭: off;
-% 空白页留字
-\emptypagewords{[ -- This page is a preset empty page -- ]}
-
-%=================================================================
 % buaa模板已内嵌以下LaTeX工具包:
 %--------------------
 % ifthen, etoolbox, titletoc, remreset,
@@ -81,49 +64,60 @@
 % For Mac: times, fontspec
 %--------------------
 % 请在此处添加额外工具包>>
-
-
 %=================================================================
 % buaa模板已内嵌以下LaTeX宏:
 %--------------------
 % \highlight{text} % 黄色高亮
 %--------------------
 % 请在此处添加自定义宏>>
-
-
 %%=================================================================
+
+\documentclass[master,public,twoside,win,AutoFakeBold]{buaa}
+
+%=================================================================
+% 开启/关闭引用编号颜色：参考文献，公式，图，表，算法 等……
+\refcolor{on}   % 开启: on[默认]; 关闭: off;
+% 摘要和正文从右侧页开始
+\beginright{on} % 开启: on[默认]; 关闭: off;
+% 空白页留字
+\blindmode{off}   % 盲评模式，开启后不显示学校等信息 开启: on; 关闭: off[默认];
+%开启后注意修改致谢和学术成果
+\emptypagewords{[ -- This page is a preset empty page -- ]}
+
+%=================================================================
 % 论文题目及副标题-{中文}{英文}
 \Title{安徽大学硕士学位论文~\LaTeX{}模板}{\LaTeX{} Template of Anhui University Thesis}
 \Subtitle{学位论文~\LaTeX{}模板}
 
-% 学科大类,默认工学
-% \Branch{工学}
+% 学位级别
+\Branch{理学硕士}
 
 % 院系,专业及研究方向
-\Department{宇航学院}
-% 一级学科
+\Department{物理与材料科学学院}
+% 一级学科/学科专业
 \Major{物理学}
 % 二级学科
 \Majorsec{理论物理}
-\Feild{模式识别与智能系统}
+%研究方向
+\Field{理论物理}
 
 % 导师信息-{中文名}{英文名}{职称}
-\Tutor{导师姓名}{Tutor}{}
-\Cotutor{副导师姓名}{Cotutor}{}
+\Tutor{张三}{San Zhang}{教授}
+%\Cotutor{副导师姓名}{Cotutor}{高工}
 
 % 学生姓名-{中文名}{英文名}
-\Author{学生姓名}{Student}
-% 学生学号
-\StudentID{10357ID123456}
+\Author{李四}{Si Li}
+% 论文编号
+\StudentID{10357B00000000}
 
 % 中图分类号
-\CLC{TP391.4}
+\CLC{AB00}
 
 % 时间节点-{月}{日}{年}
-\DateEnroll{09}{01}{2015}
-\DateGraduate{03}{31}{2018}
-\DateSubmit{01}{10}{2018}
-\DateDefence{03}{01}{2018}
+\DateEnroll{00}{00}{0000}
+\DateGraduate{00}{00}{0000}
+\DateSubmit{00}{00}{0000}
+\DateDefence{00}{00}{0000}
 
 %%=================================================================
 % 摘要-{中文}{英文}
@@ -209,10 +203,6 @@
 \input{tex/chap_acknowledge}
 
 % 作者简介
-\input{tex/chap_biography}
-
-\vspace{5cm}
-
-This is \BUAAThesis{}, Happy TeXing! --- from WeiQM.
+%\input{tex/chap_biography}
 
 \end{document}

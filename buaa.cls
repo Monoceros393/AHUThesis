@@ -266,6 +266,8 @@
 \newcommand{\emptypagewords}[1]{\gdef\@emptypagewords{#1}}
 \def\@beginright{} % 摘要、目录、第一章右侧页起 on/off
 \newcommand{\beginright}[1]{\gdef\@beginright{#1}}
+\def\@blindmode{} % 摘要、目录、第一章右侧页起 on/off
+\newcommand{\blindmode}[1]{\gdef\@blindmode{#1}}
 
 \newcommand{\Title}[2]{\gdef\@titlecn{#1} \gdef\@titleen{#2}}
 \newcommand{\Subtitle}[2]{\gdef\@subtitlecn{#1} \gdef\@subtitleen{#2}}
@@ -274,7 +276,7 @@
 \newcommand{\Branch}[1]{\gdef\@branch{#1}}
 \newcommand{\Major}[1]{\gdef\@major{#1}}
 \newcommand{\Majorsec}[1]{\gdef\@majorsec{#1}}
-\newcommand{\Feild}[1]{\gdef\@feild{#1}}
+\newcommand{\Field}[1]{\gdef\@field{#1}}
 \newcommand{\Tutor}[3]{\gdef\@tutorcn{#1} \gdef\@tutoren{#2} \gdef\@tutordegree{#3}}
 \newcommand{\Cotutor}[3]{%
   \gdef\@cotutorcn{#1}
@@ -467,8 +469,8 @@
     Please set major by 'Major'.}}{}
     \ifthenelse{\isundefined{\@majorsec}}{\errmessage{%
     Please set major by 'Majosec'.}}{}
-  \ifthenelse{\isundefined{\@feild}}{\errmessage{%
-    Please set feild by 'Feild'.}}{}
+  \ifthenelse{\isundefined{\@field}}{\errmessage{%
+    Please set field by 'Field'.}}{}
   \ifthenelse{\isundefined{\@tutorcn}}{\errmessage{%
     Please set tutor name by 'Tutor'.}}{}
   \ifthenelse{\isundefined{\@authorcn}}{\errmessage{%
@@ -624,7 +626,13 @@
   \fancyfoot[C]{\zihao{5} \thepage}
   \fancyhead[CE]{\zihao{-5} \leftmark}
   \ifthenelse{\equal{\@thesis}{master} \OR \equal{\@thesis}{professional}}{%
-      \fancyhead[CO]{\zihao{-5}  安徽大学硕士学位论文}}{}
+  \ifthenelse{\equal{\@blindmode}{off}}{
+    \fancyhead[CO]{\zihao{-5}  安徽大学硕士学位论文}
+  }{
+    \fancyhead[CO]{\zihao{-5}  XX大学硕士学位论文}
+  }
+      
+      }{}
   \ifthenelse{\equal{\@thesis}{doctor}}{%
       \fancyhead[CO]{\zihao{-5} 北京航空航天大学博士学位论文}}{}
   \setcounter{page}{1}
@@ -636,19 +644,21 @@
 {\pdfbookmark[0]{中文封面}{makecovercn}
 
   {\zihao{5} \heiti \noindent
-    \makebox[5\ccwd][s]{中图分类号}：{\bfseries \@clc}%
+    \makebox[5\ccwd][s]{中图分类号}：{\ifthenelse{\equal{\@blindmode}{off}}{\bfseries \@clc}{\bfseries XXX}}%
     \hfill \TranSecretLevel{\@permission}
     \\
-    \makebox[5\ccwd][s]{论文编号}：{\bfseries \@studentid}
+    \makebox[5\ccwd][s]{论文编号}：{\ifthenelse{\equal{\@blindmode}{off}}{\bfseries \@studentid}{\bfseries XXX}}
   }
 
   \vspace{80pt}
 
+  \ifthenelse{\equal{\@blindmode}{off}}{
   \begin{figure}[h]
     \centering
     \includegraphics{pic/logo-ahu}
   \end{figure}
   \vspace{-10pt}
+  }{\vspace{70pt}}
   \begin{figure}[h]
     \centering
     \ifthenelse{\equal{\@thesis}{master}}{\includegraphics[width=0.9\linewidth]{pic/head-master}}{
@@ -673,10 +683,17 @@
   \begin{spacing}{1.8}
     \ziju{0.2} \zihao{-3} \heiti
     \begin{tabular}{cll}
+      \ifthenelse{\equal{\@blindmode}{off}}{
       作者姓名  & \@authorcn \\
       一级学科  & \@major \\
       二级学科  & \@majorsec \\
       指导教师  & \@tutorcn
+      }{
+        作者姓名  & XXX \\
+        一级学科  & XXX \\
+        二级学科  & XXX \\
+        指导教师  & XXX
+      }
     \end{tabular}
   \end{spacing}
 
@@ -712,9 +729,15 @@
     {\zihao{-3} \bfseries
       \begin{tabular}{ll}
         \ifthenelse{\isundefined{\@cotutorcn}}{%
+        \ifthenelse{\equal{\@blindmode}{off}}{
           \makebox[70pt][s]{Candidate}:  & \@authoren \\
           \vspace{-10pt}\\
           \makebox[70pt][s]{Supervisor}: & \@tutoren \\
+        }{
+          \makebox[70pt][s]{Candidate}:  & XXX \\
+          \vspace{-10pt}\\
+          \makebox[70pt][s]{Supervisor}: & XXX \\
+        }
         }{%
           \makebox[77pt][s]{Candidate}:  & \@authoren \\
           \vspace{-10pt}\\
@@ -740,10 +763,10 @@
 {\pdfbookmark[0]{题目页}{makecoverinner}
 
   {\zihao{5} \heiti \noindent
-    \makebox[5\ccwd][s]{中图分类号}：{\bfseries \@clc}%
+    \makebox[5\ccwd][s]{中图分类号}：{\ifthenelse{\equal{\@blindmode}{off}}{\bfseries \@clc}{\bfseries XXX}}%
     \hfill \TranSecretLevel{\@permission}
     \\
-    \makebox[5\ccwd][s]{论文编号}：{\bfseries \@studentid}
+    \makebox[5\ccwd][s]{论文编号}：{\ifthenelse{\equal{\@blindmode}{off}}{\bfseries \@studentid}{\bfseries XXX}}
   }
 
   \centering
@@ -777,20 +800,29 @@
   \begin{spacing}{2.3}
     \zihao{-4} \songti
     \begin{tabular}{lrrrlrrr}
-      作者姓名     &          \multicolumn{3}{l}{\@authorcn}                   & 申请学位级别        &   \multicolumn{3}{l}{ \hspace{-6pt}
-        \@branch
-      }       \\
+      \ifthenelse{\equal{\@blindmode}{off}}{
+      作者姓名     &          \multicolumn{3}{l}{\@authorcn}                   & 申请学位级别        &   \multicolumn{3}{l}{ \hspace{-3pt} \@branch } \\
       指导教师姓名 &          \multicolumn{3}{l}{\@tutorcn}                    & 职\hspace{2\ccwd}称 &                        \multicolumn{3}{l}{\@tutordegree}                      \\
-      学科专业     &          \multicolumn{3}{l}{\@major}                      & 研究方向            &                        \multicolumn{3}{l}{\@feild}                            \\
+      学科专业     &          \multicolumn{3}{l}{\@major}                      & 研究方向            &                        \multicolumn{3}{l}{\@field}                            \\
       学习时间自   & \@dateenrolly\ 年 & \@dateenrollm\ 月 & \@dateenrolld\ 日 & \hspace{2\ccwd}起至 & \@dategraduatey\ 年 & \@dategraduatem\ 月 & \@dategraduated\ 日止             \\
       论文提交日期 & \@datesubmity\ 年 & \@datesubmitm\ 月 & \@datesubmitd\ 日 & 论文答辩日期        & \@datedefencey \ 年 & \@datedefencem \ 月 & \@datedefenced \ 日\hspace{\ccwd} \\
 %      学位授予单位 &          \multicolumn{3}{l}{北京航空航天大学}             & 学位授予日期        &                  年 &                  月 &                  日\hspace{\ccwd} \\
-    \end{tabular}
+      }{
+        作者姓名     &          \multicolumn{3}{l}{XXX}                   & 申请学位级别        &   \multicolumn{3}{l}{ \hspace{-3pt} XXX } \\
+        指导教师姓名 &          \multicolumn{3}{l}{XXX}                    & 职\hspace{2\ccwd}称 &                        \multicolumn{3}{l}{XXX}                      \\
+        学科专业     &          \multicolumn{3}{l}{XXX}                      & 研究方向            &                        \multicolumn{3}{l}{XXX}                            \\
+        学习时间自   & XXXX 年 & XX 月 & XX 日 & \hspace{2\ccwd}起至 & XXXX 年 & XX 月 & XX 日止             \\
+        论文提交日期 & XXXX 年 & XX 月 & XX 日 & 论文答辩日期        & XXXX 年 & XX 月 & XX 日\hspace{\ccwd} \\
+  %      学位授予单位 &          \multicolumn{3}{l}{北京航空航天大学}             & 学位授予日期        &                  年 &                  月 &                  日\hspace{\ccwd} \\
+      }    
+\end{tabular}
   \end{spacing}
     \clearautopage
 }}
 \newcommand{\makestatementbuaa}{% 北航声明
-{\pdfbookmark[0]{独创性声明}{makestatementbuaa}
+{
+  \ifthenelse{\equal{\@blindmode}{off}}{
+  \pdfbookmark[0]{独创性声明}{makestatementbuaa}
 
   \begin{spacing}{1.7}%1.5+0.2
     {\zihao{-1} \fangsong \centerline{独创性声明}}
@@ -821,6 +853,7 @@
 
   \end{spacing}
   \clearautopage
+  }{}
 }}
 
 
