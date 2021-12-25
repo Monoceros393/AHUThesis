@@ -622,7 +622,7 @@
   \denotation
 
   \renewcommand{\headrulewidth}{0.4pt}
-  \renewcommand{\chaptermark}[1]{\markboth{第\chinese{chapter}章~~#1}{}} 
+  \renewcommand{\chaptermark}[1]{\markboth{第\chinese{chapter}章~~#1}{}}
   \fancyfoot[C]{\zihao{5} \thepage}
   \fancyhead[CE]{\zihao{-5} \leftmark}
   \ifthenelse{\equal{\@thesis}{master} \OR \equal{\@thesis}{professional}}{%
@@ -631,7 +631,7 @@
   }{
     \fancyhead[CO]{\zihao{-5}  XX大学硕士学位论文}
   }
-      
+
       }{}
   \ifthenelse{\equal{\@thesis}{doctor}}{%
       \fancyhead[CO]{\zihao{-5} 北京航空航天大学博士学位论文}}{}
@@ -682,22 +682,23 @@
   \vspace{100pt}
   \begin{spacing}{1.8}
     \ziju{0.2} \zihao{-3} \heiti
-    \begin{tabular}{cll}
-      \ifthenelse{\equal{\@blindmode}{off}}{
+     \ifthenelse{\equal{\@blindmode}{off}}{
+    \begin{tabular}{ll}
       作者姓名  & \@authorcn \\
       一级学科  & \@major \\
       二级学科  & \@majorsec \\
       指导教师  & \@tutorcn
+     \end{tabular}
       }{
+         \begin{tabular}{ll}
         作者姓名  & XXX \\
         一级学科  & XXX \\
         二级学科  & XXX \\
         指导教师  & XXX
+         \end{tabular}
       }
-    \end{tabular}
   \end{spacing}
-
-  \clearautopage
+  \ifthenelse{\equal{\@beginright}{off}}{\clearpage}{\clearautopage}
 }}
 \newcommand{\makecoveren}{% 英文封面
 {\pdfbookmark[0]{英文封面}{makecoveren}
@@ -727,17 +728,12 @@
 
     \vspace{200pt}
     {\zihao{-3} \bfseries
+            \ifthenelse{\equal{\@blindmode}{off}}{
       \begin{tabular}{ll}
-        \ifthenelse{\isundefined{\@cotutorcn}}{%
-        \ifthenelse{\equal{\@blindmode}{off}}{
+        \ifthenelse{\isundefined{\@cotutorcn}}{%双导师
           \makebox[70pt][s]{Candidate}:  & \@authoren \\
           \vspace{-10pt}\\
           \makebox[70pt][s]{Supervisor}: & \@tutoren \\
-        }{
-          \makebox[70pt][s]{Candidate}:  & XXX \\
-          \vspace{-10pt}\\
-          \makebox[70pt][s]{Supervisor}: & XXX \\
-        }
         }{%
           \makebox[77pt][s]{Candidate}:  & \@authoren \\
           \vspace{-10pt}\\
@@ -745,7 +741,19 @@
                                           & \TranDegree{\@cotutordegree} \hspace{-8pt} \@cotutoren\\
         }
       \end{tabular}
-    }
+      }{
+ \begin{tabular}{ll}
+        \ifthenelse{\isundefined{\@cotutorcn}}{%双导师
+          \makebox[70pt][s]{Candidate}:  & XXX \\
+          \vspace{-10pt}\\
+          \makebox[70pt][s]{Supervisor}: & XXX \\
+        }{%
+          \makebox[77pt][s]{Candidate}:  & XXX \\
+          \vspace{-10pt}\\
+          \makebox[77pt][s]{Supervisors}: & XXX \\
+                                                             & XXX\\
+        }
+    }}
   \end{spacing}
 
 %  \vspace{150pt}
@@ -757,7 +765,7 @@
 %    }
 %  \end{spacing}
 
-  \clearautopage
+  \ifthenelse{\equal{\@beginright}{off}}{\clearpage}{\clearautopage}
 }}
 \newcommand{\makecoverinner}{% 封面内页
 {\pdfbookmark[0]{题目页}{makecoverinner}
@@ -799,25 +807,25 @@
   \vspace{120pt}
   \begin{spacing}{2.3}
     \zihao{-4} \songti
+    \ifthenelse{\equal{\@blindmode}{off}}{
     \begin{tabular}{lrrrlrrr}
-      \ifthenelse{\equal{\@blindmode}{off}}{
       作者姓名     &          \multicolumn{3}{l}{\@authorcn}                   & 申请学位级别        &   \multicolumn{3}{l}{ \hspace{-3pt} \@branch } \\
       指导教师姓名 &          \multicolumn{3}{l}{\@tutorcn}                    & 职\hspace{2\ccwd}称 &                        \multicolumn{3}{l}{\@tutordegree}                      \\
       学科专业     &          \multicolumn{3}{l}{\@major}                      & 研究方向            &                        \multicolumn{3}{l}{\@field}                            \\
       学习时间自   & \@dateenrolly\ 年 & \@dateenrollm\ 月 & \@dateenrolld\ 日 & \hspace{2\ccwd}起至 & \@dategraduatey\ 年 & \@dategraduatem\ 月 & \@dategraduated\ 日止             \\
       论文提交日期 & \@datesubmity\ 年 & \@datesubmitm\ 月 & \@datesubmitd\ 日 & 论文答辩日期        & \@datedefencey \ 年 & \@datedefencem \ 月 & \@datedefenced \ 日\hspace{\ccwd} \\
 %      学位授予单位 &          \multicolumn{3}{l}{北京航空航天大学}             & 学位授予日期        &                  年 &                  月 &                  日\hspace{\ccwd} \\
-      }{
+\end{tabular}
+}{
         作者姓名     &          \multicolumn{3}{l}{XXX}                   & 申请学位级别        &   \multicolumn{3}{l}{ \hspace{-3pt} XXX } \\
         指导教师姓名 &          \multicolumn{3}{l}{XXX}                    & 职\hspace{2\ccwd}称 &                        \multicolumn{3}{l}{XXX}                      \\
         学科专业     &          \multicolumn{3}{l}{XXX}                      & 研究方向            &                        \multicolumn{3}{l}{XXX}                            \\
         学习时间自   & XXXX 年 & XX 月 & XX 日 & \hspace{2\ccwd}起至 & XXXX 年 & XX 月 & XX 日止             \\
         论文提交日期 & XXXX 年 & XX 月 & XX 日 & 论文答辩日期        & XXXX 年 & XX 月 & XX 日\hspace{\ccwd} \\
   %      学位授予单位 &          \multicolumn{3}{l}{北京航空航天大学}             & 学位授予日期        &                  年 &                  月 &                  日\hspace{\ccwd} \\
-      }    
-\end{tabular}
+}
   \end{spacing}
-    \clearautopage
+  \ifthenelse{\equal{\@beginright}{off}}{\clearpage}{\clearautopage}
 }}
 \newcommand{\makestatementbuaa}{% 北航声明
 {
@@ -869,7 +877,7 @@
     }
 
     \clearpage
-    %\ifthenelse{\equal{\@beginright}{off}}{\clearpage}{\clearautopage}
+    \ifthenelse{\equal{\@beginright}{off}}{\clearpage}{\clearautopage}
 
     {\zihao{3}  \bfseries \centerline{Abstract}}
     {\zihao{-4} ~\par

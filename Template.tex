@@ -57,7 +57,7 @@
 % array, enumitem,
 % booktabs, longtable, multirow, caption,
 % listings, algorithm2e, amsmath, amsthm,
-% hyperref, pifont, color, soul, 
+% hyperref, pifont, color, soul,
 % ---
 % For Win: times
 % For Lin: newtxtext, newtxmath
@@ -77,11 +77,14 @@
 %=================================================================
 % 开启/关闭引用编号颜色：参考文献，公式，图，表，算法 等……
 \refcolor{on}   % 开启: on[默认]; 关闭: off;
-% 摘要和正文从右侧页开始
-\beginright{on} % 开启: on[默认]; 关闭: off;
+
+% 摘要和正文从右侧页开始，单面打印请关闭
+\beginright{off} % 开启: on; 关闭: off[默认];
+
+%盲评模式，开启后不显示学校等信息 ，注意自行修改致谢和学术成果
+\blindmode{off}   % 开启: on; 关闭: off[默认];
+
 % 空白页留字
-\blindmode{off}   % 盲评模式，开启后不显示学校等信息 开启: on; 关闭: off[默认];
-%开启后注意修改致谢和学术成果
 \emptypagewords{[ -- This page is a preset empty page -- ]}
 
 %=================================================================
@@ -114,9 +117,13 @@
 \CLC{AB00}
 
 % 时间节点-{月}{日}{年}
-\DateEnroll{00}{00}{0000}
-\DateGraduate{00}{00}{0000}
+%入学时间
+\DateEnroll{09}{01}{0000}
+%毕业时间
+\DateGraduate{07}{01}{0000}
+%论文提交日期
 \DateSubmit{00}{00}{0000}
+%论文答辩日期
 \DateDefence{00}{00}{0000}
 
 %%=================================================================
@@ -205,4 +212,4 @@
 % 作者简介
 %\input{tex/chap_biography}
 
-\end{document}
+\end{document} 
