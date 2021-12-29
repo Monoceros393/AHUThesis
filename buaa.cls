@@ -266,7 +266,7 @@
 \newcommand{\emptypagewords}[1]{\gdef\@emptypagewords{#1}}
 \def\@beginright{} % 摘要、目录、第一章右侧页起 on/off
 \newcommand{\beginright}[1]{\gdef\@beginright{#1}}
-\def\@blindmode{} % 摘要、目录、第一章右侧页起 on/off
+\def\@blindmode{} % 盲评模式 on/off
 \newcommand{\blindmode}[1]{\gdef\@blindmode{#1}}
 
 \newcommand{\Title}[2]{\gdef\@titlecn{#1} \gdef\@titleen{#2}}
@@ -318,9 +318,9 @@
 }
 % 部分标题修改
 \ctexset{%
-  contentsname={目~~~~录},
-  listfigurename={图~清~单},
-  listtablename={表~清~单},
+  contentsname={\zihao{-2} \bfseries \heiti 目~~~~录},
+  listfigurename={\zihao{-2} \bfseries \heiti 图~清~单},
+  listtablename={\zihao{-2} \bfseries \heiti  表~清~单},
 }
 % 标题样式修改
 \ctexset{%
@@ -386,11 +386,11 @@
 
 
 \titlecontents{figure}[0pt]{\settowidth{\hangindent}{图~\thecontentslabel\ \ }\songti\zihao{-4}}
-{图~\thecontentslabel\ \ }{}
+{图~~\thecontentslabel\ \ }{}
 {\hspace{.25em}\titlerule*[4pt]{$\cdot$}\contentspage}
 
 \titlecontents{table}[0pt]{\settowidth{\hangindent}{表~\thecontentslabel\ \ }\songti\zihao{-4}}
-{表~\thecontentslabel\ \ }{}
+{表~~\thecontentslabel\ \ }{}
 {\hspace{.25em}\titlerule*[4pt]{$\cdot$}\contentspage}
 
 % 图表环境设置
@@ -631,7 +631,6 @@
   }{
     \fancyhead[CO]{\zihao{-5}  XX大学硕士学位论文}
   }
-
       }{}
   \ifthenelse{\equal{\@thesis}{doctor}}{%
       \fancyhead[CO]{\zihao{-5} 北京航空航天大学博士学位论文}}{}
@@ -643,7 +642,7 @@
 \newcommand{\makecovercn}{% 中文封面
 {\pdfbookmark[0]{中文封面}{makecovercn}
 
-  {\zihao{5} \heiti \noindent
+  {\zihao{5} \heiti \bfseries \noindent
     \makebox[5\ccwd][s]{中图分类号}：{\ifthenelse{\equal{\@blindmode}{off}}{\bfseries \@clc}{\bfseries XXX}}%
     \hfill \TranSecretLevel{\@permission}
     \\
@@ -690,12 +689,12 @@
       指导教师  & \@tutorcn
      \end{tabular}
       }{
-         \begin{tabular}{ll}
+      \begin{tabular}{ll}
         作者姓名  & XXX \\
         一级学科  & XXX \\
         二级学科  & XXX \\
         指导教师  & XXX
-         \end{tabular}
+      \end{tabular}
       }
   \end{spacing}
   \ifthenelse{\equal{\@beginright}{off}}{\clearpage}{\clearautopage}
@@ -753,6 +752,7 @@
           \makebox[77pt][s]{Supervisors}: & XXX \\
                                                              & XXX\\
         }
+      \end{tabular}
     }}
   \end{spacing}
 
@@ -770,7 +770,7 @@
 \newcommand{\makecoverinner}{% 封面内页
 {\pdfbookmark[0]{题目页}{makecoverinner}
 
-  {\zihao{5} \heiti \noindent
+  {\zihao{5} \heiti \bfseries \noindent
     \makebox[5\ccwd][s]{中图分类号}：{\ifthenelse{\equal{\@blindmode}{off}}{\bfseries \@clc}{\bfseries XXX}}%
     \hfill \TranSecretLevel{\@permission}
     \\
@@ -812,18 +812,20 @@
       作者姓名     &          \multicolumn{3}{l}{\@authorcn}                   & 申请学位级别        &   \multicolumn{3}{l}{ \hspace{-3pt} \@branch } \\
       指导教师姓名 &          \multicolumn{3}{l}{\@tutorcn}                    & 职\hspace{2\ccwd}称 &                        \multicolumn{3}{l}{\@tutordegree}                      \\
       学科专业     &          \multicolumn{3}{l}{\@major}                      & 研究方向            &                        \multicolumn{3}{l}{\@field}                            \\
-      学习时间自   & \@dateenrolly\ 年 & \@dateenrollm\ 月 & \@dateenrolld\ 日 & \hspace{2\ccwd}起至 & \@dategraduatey\ 年 & \@dategraduatem\ 月 & \@dategraduated\ 日止             \\
+      学习时间自   & \@dateenrolly\ 年 & \@dateenrollm\ 月 & \@dateenrolld\ 日 & 起至 & \@dategraduatey\ 年 & \@dategraduatem\ 月 & \@dategraduated\ 日止             \\
       论文提交日期 & \@datesubmity\ 年 & \@datesubmitm\ 月 & \@datesubmitd\ 日 & 论文答辩日期        & \@datedefencey \ 年 & \@datedefencem \ 月 & \@datedefenced \ 日\hspace{\ccwd} \\
 %      学位授予单位 &          \multicolumn{3}{l}{北京航空航天大学}             & 学位授予日期        &                  年 &                  月 &                  日\hspace{\ccwd} \\
 \end{tabular}
 }{
+\begin{tabular}{lrrrlrrr}
         作者姓名     &          \multicolumn{3}{l}{XXX}                   & 申请学位级别        &   \multicolumn{3}{l}{ \hspace{-3pt} XXX } \\
         指导教师姓名 &          \multicolumn{3}{l}{XXX}                    & 职\hspace{2\ccwd}称 &                        \multicolumn{3}{l}{XXX}                      \\
         学科专业     &          \multicolumn{3}{l}{XXX}                      & 研究方向            &                        \multicolumn{3}{l}{XXX}                            \\
-        学习时间自   & XXXX 年 & XX 月 & XX 日 & \hspace{2\ccwd}起至 & XXXX 年 & XX 月 & XX 日止             \\
+        学习时间自   & XXXX 年 & XX 月 & XX 日 & 起至 & XXXX 年 & XX 月 & XX 日止             \\
         论文提交日期 & XXXX 年 & XX 月 & XX 日 & 论文答辩日期        & XXXX 年 & XX 月 & XX 日\hspace{\ccwd} \\
   %      学位授予单位 &          \multicolumn{3}{l}{北京航空航天大学}             & 学位授予日期        &                  年 &                  月 &                  日\hspace{\ccwd} \\
-}
+\end{tabular}
+  }
   \end{spacing}
   \ifthenelse{\equal{\@beginright}{off}}{\clearpage}{\clearautopage}
 }}
@@ -831,7 +833,6 @@
 {
   \ifthenelse{\equal{\@blindmode}{off}}{
   \pdfbookmark[0]{独创性声明}{makestatementbuaa}
-
   \begin{spacing}{1.7}%1.5+0.2
     {\zihao{-1} \fangsong \centerline{独创性声明}}
     {\zihao{-4} \fangsong ~\par
@@ -858,7 +859,6 @@
       {签字日期：\hspace{3\ccwd}年\hspace{2\ccwd}月\hspace{2\ccwd}日}    \hspace{2\ccwd}
       签字日期：\hspace{3\ccwd}年\hspace{2\ccwd}月\hspace{2\ccwd}日}
     }
-
   \end{spacing}
   \clearautopage
   }{}
@@ -869,11 +869,10 @@
 {\pdfbookmark[0]{中英摘要}{abstructkeyword}
 
   \begin{spacing}{1.7}%1.5+0.2
-
-    {\zihao{3} \heiti  \centerline{摘~~~~要}}
+    {\zihao{3} \heiti \bfseries \centerline{摘~~~~要}}
     {\zihao{-4} \songti ~\par
       \@abstrctcn \par ~\par
-      {\heiti 关键字：} \@keywordcn
+      {\heiti \bfseries 关键词：} \@keywordcn
     }
 
     \clearpage
