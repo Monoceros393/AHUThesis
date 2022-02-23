@@ -608,6 +608,9 @@
 \AtBeginDocument{%
   \checkinput
   \sethyper
+ %图表计数器换章清零
+  \counterwithin{figure}{chapter}
+  \counterwithin{table}{chapter}
 }
 \AfterEndPreamble{%
   \makecovercn
