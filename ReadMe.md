@@ -10,4 +10,8 @@
 
 ## 本人运行环境
 
-MikTex+VS Code
+MikTex+WinEdt
+
+## 已知bug
+
+1，双导师模式
