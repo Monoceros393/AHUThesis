@@ -384,7 +384,6 @@
 {\thecontentslabel\ \ }{}
 {\hspace{.25em}\titlerule*[4pt]{$\cdot$}\contentspage}
 
-
 \titlecontents{figure}[0pt]{\settowidth{\hangindent}{图~\thecontentslabel\ \ }\songti\zihao{-4}}
 {图~~\thecontentslabel\ \ }{}
 {\hspace{.25em}\titlerule*[4pt]{$\cdot$}\contentspage}
@@ -608,7 +607,7 @@
 \AtBeginDocument{%
   \checkinput
   \sethyper
- %图表计数器换章清零
+%图标计数器换章清零
   \counterwithin{figure}{chapter}
   \counterwithin{table}{chapter}
 }
@@ -646,7 +645,7 @@
 {\pdfbookmark[0]{中文封面}{makecovercn}
 
   {\zihao{5} \heiti \bfseries \noindent
-    \makebox[5\ccwd][s]{中图分类号}：{\ifthenelse{\equal{\@blindmode}{off}}{\bfseries \@clc}{\bfseries XXX}}%
+    \makebox[5\ccwd][s]{中图分类号}：{\bfseries \@clc}%
     \hfill \TranSecretLevel{\@permission}
     \\
     \makebox[5\ccwd][s]{论文编号}：{\ifthenelse{\equal{\@blindmode}{off}}{\bfseries \@studentid}{\bfseries XXX}}
@@ -660,7 +659,7 @@
     \includegraphics{pic/logo-ahu}
   \end{figure}
   \vspace{-10pt}
-  }{\vspace{70pt}}
+  }{\vspace{60pt}}
   \begin{figure}[h]
     \centering
     \ifthenelse{\equal{\@thesis}{master}}{\includegraphics[width=0.9\linewidth]{pic/head-master}}{
@@ -671,7 +670,7 @@
 
   \centering
 
-  \vspace{20pt}
+  \vspace{45pt}
   \begin{spacing}{1.2}
     \ifthenelse{\isundefined{\@subtitlecn}}{\vspace{20pt}}{}
     \zihao{-0} \songti \bfseries \@titlecn
@@ -694,8 +693,8 @@
       }{
       \begin{tabular}{ll}
         作者姓名  & XXX \\
-        一级学科  & XXX \\
-        二级学科  & XXX \\
+        一级学科  & \@major \\
+        二级学科  & \@majorsec \\
         指导教师  & XXX
       \end{tabular}
       }
@@ -731,27 +730,27 @@
     \vspace{200pt}
     {\zihao{-3} \bfseries
             \ifthenelse{\equal{\@blindmode}{off}}{
-      \begin{tabular}{ll}
+      \begin{tabular}{cll}
         \ifthenelse{\isundefined{\@cotutorcn}}{%双导师
-          \makebox[70pt][s]{Candidate}:  & \@authoren \\
-          \vspace{-10pt}\\
-          \makebox[70pt][s]{Supervisor}: & \@tutoren \\
+          \makebox[70pt][s]{Candidate}:   \@authoren \\
+          \vspace{10pt}\\
+          \makebox[70pt][s]{Supervisor}:  \@tutoren \\
         }{%
-          \makebox[77pt][s]{Candidate}:  & \@authoren \\
-          \vspace{-10pt}\\
+          \makebox[77pt][s]{Candidate}:   \@authoren \\
+          \vspace{10pt}\\
           \makebox[77pt][s]{Supervisors}: & \TranDegree{\@tutordegree} \hspace{-8pt} \@tutoren \\
                                           & \TranDegree{\@cotutordegree} \hspace{-8pt} \@cotutoren\\
         }
-      \end{tabular}
+     \end{tabular}
       }{
- \begin{tabular}{ll}
+ \begin{tabular}{cll}
         \ifthenelse{\isundefined{\@cotutorcn}}{%双导师
-          \makebox[70pt][s]{Candidate}:  & XXX \\
-          \vspace{-10pt}\\
-          \makebox[70pt][s]{Supervisor}: & XXX \\
+          \makebox[70pt][s]{Candidate}:   XXX \\
+          \vspace{10pt}\\
+          \makebox[70pt][s]{Supervisor}:  XXX \\
         }{%
-          \makebox[77pt][s]{Candidate}:  & XXX \\
-          \vspace{-10pt}\\
+          \makebox[77pt][s]{Candidate}:   XXX \\
+          \vspace{10pt}\\
           \makebox[77pt][s]{Supervisors}: & XXX \\
                                                              & XXX\\
         }
@@ -774,7 +773,7 @@
 {\pdfbookmark[0]{题目页}{makecoverinner}
 
   {\zihao{5} \heiti \bfseries \noindent
-    \makebox[5\ccwd][s]{中图分类号}：{\ifthenelse{\equal{\@blindmode}{off}}{\bfseries \@clc}{\bfseries XXX}}%
+    \makebox[5\ccwd][s]{中图分类号}：{\bfseries \@clc}%
     \hfill \TranSecretLevel{\@permission}
     \\
     \makebox[5\ccwd][s]{论文编号}：{\ifthenelse{\equal{\@blindmode}{off}}{\bfseries \@studentid}{\bfseries XXX}}
@@ -813,7 +812,7 @@
     \ifthenelse{\equal{\@blindmode}{off}}{
     \begin{tabular}{lrrrlrrr}
       作者姓名     &          \multicolumn{3}{l}{\@authorcn}                   & 申请学位级别        &   \multicolumn{3}{l}{ \hspace{-3pt} \@branch } \\
-      指导教师姓名 &          \multicolumn{3}{l}{\@tutorcn}                    & 职\hspace{2\ccwd}称 &                        \multicolumn{3}{l}{\@tutordegree}                      \\
+      指导教师姓名 &          \multicolumn{3}{l}{\@tutorcn}                    & 职\hspace{2\ccwd}称 &                        \multicolumn{3}{l}{\@tutordegree}                    \\
       学科专业     &          \multicolumn{3}{l}{\@major}                      & 研究方向            &                        \multicolumn{3}{l}{\@field}                            \\
       学习时间自   & \@dateenrolly\ 年 & \@dateenrollm\ 月 & \@dateenrolld\ 日 & 起至 & \@dategraduatey\ 年 & \@dategraduatem\ 月 & \@dategraduated\ 日止             \\
       论文提交日期 & \@datesubmity\ 年 & \@datesubmitm\ 月 & \@datesubmitd\ 日 & 论文答辩日期        & \@datedefencey \ 年 & \@datedefencem \ 月 & \@datedefenced \ 日\hspace{\ccwd} \\
@@ -821,11 +820,11 @@
 \end{tabular}
 }{
 \begin{tabular}{lrrrlrrr}
-        作者姓名     &          \multicolumn{3}{l}{XXX}                   & 申请学位级别        &   \multicolumn{3}{l}{ \hspace{-3pt} XXX } \\
+        作者姓名     &          \multicolumn{3}{l}{XXX}                   & 申请学位级别        &   \multicolumn{3}{l}{ \hspace{-3pt} \@branch } \\
         指导教师姓名 &          \multicolumn{3}{l}{XXX}                    & 职\hspace{2\ccwd}称 &                        \multicolumn{3}{l}{XXX}                      \\
-        学科专业     &          \multicolumn{3}{l}{XXX}                      & 研究方向            &                        \multicolumn{3}{l}{XXX}                            \\
-        学习时间自   & XXXX 年 & XX 月 & XX 日 & 起至 & XXXX 年 & XX 月 & XX 日止             \\
-        论文提交日期 & XXXX 年 & XX 月 & XX 日 & 论文答辩日期        & XXXX 年 & XX 月 & XX 日\hspace{\ccwd} \\
+        学科专业     &          \multicolumn{3}{l}{\@major}                      & 研究方向            &                        \multicolumn{3}{l}{\@field}                         \\
+        学习时间自   & \@dateenrolly\ 年 & \@dateenrollm\ 月 & \@dateenrolld\ 日 & 起至 & \@dategraduatey\ 年 & \@dategraduatem\ 月 & \@dategraduated\ 日止             \\
+        论文提交日期 & \@datesubmity\ 年 & \@datesubmitm\ 月 & \@datesubmitd\ 日 & 论文答辩日期        & \@datedefencey \ 年 & \@datedefencem \ 月 & \@datedefenced \ 日\hspace{\ccwd} \\
   %      学位授予单位 &          \multicolumn{3}{l}{北京航空航天大学}             & 学位授予日期        &                  年 &                  月 &                  日\hspace{\ccwd} \\
 \end{tabular}
   }
