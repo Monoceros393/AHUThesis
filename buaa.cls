@@ -260,8 +260,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 输入
-\def\@refcolor{} % 给注释及引用使用颜色 on/off
-\newcommand{\refcolor}[1]{\gdef\@refcolor{#1}}
 \def\@emptypagewords{} % 空白页留字
 \newcommand{\emptypagewords}[1]{\gdef\@emptypagewords{#1}}
 \def\@beginright{} % 摘要、目录、第一章右侧页起 on/off
@@ -449,7 +447,7 @@
 
 % 设置PDF
 \hypersetup{%
-  colorlinks=false,
+  colorlinks=true,
   bookmarksnumbered=true,
   bookmarksopen=true,
   pdffitwindow=true,
@@ -484,10 +482,6 @@
     Please set submite date by 'DateSubmit'.}}{}
   \ifthenelse{\isundefined{\@datedefencey}}{\errmessage{%
     Please set defence date by 'DateDefence'.}}{}
-  \ifthenelse{\equal{\@refcolor}{\empty}}{}{%
-    \ifthenelse{\equal{\@refcolor}{on} \OR \equal{\@refcolor}{off}}{}{
-    \errmessage{Please use 'on' of 'off' for refcolor.}}
-  }
   \ifthenelse{\equal{\@beginright}{\empty}}{}{%
     \ifthenelse{\equal{\@beginright}{on} \OR \equal{\@beginright}{off}}{}{
     \errmessage{Please use 'on' of 'off' for beginright.}}
@@ -519,15 +513,6 @@
     pdftitle={\@titlecn},
     pdfkeywords={\@keywordcn},
     pdfauthor={\@authorcn}
-  }
-  \ifthenelse{\equal{\@refcolor}{on}}{%
-    \hypersetup{
-      allcolors=blue,
-    }
-  }{%
-    \hypersetup{
-      allcolors=black,
-    }
   }
 }
 \newcommand{\TranSecretLevel}[1]{%密级翻译

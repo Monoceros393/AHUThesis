@@ -75,9 +75,6 @@
 \documentclass[master,public,twoside,win,AutoFakeBold]{buaa}
 
 %=================================================================
-% 开启/关闭引用编号颜色：参考文献，公式，图，表，算法 等……
-\refcolor{on}   % 开启: on[默认]; 关闭: off;
-
 % 摘要和正文从右侧页开始，单面打印请关闭
 \beginright{off} % 开启: on; 关闭: off[默认];
 
@@ -86,6 +83,9 @@
 
 % 空白页留字
 \emptypagewords{[ -- This page is a preset empty page -- ]}
+
+% 不显示超链接方框
+\hypersetup{hidelinks}
 
 %=================================================================
 % 论文题目及副标题-{中文}{英文}
